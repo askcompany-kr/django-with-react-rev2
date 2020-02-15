@@ -1,0 +1,5 @@
+Instagram 가입을 환영합니다.
+
+{{ user.first_name }} {{ user.last_name }}님 가입을 환영합니다.
+
+- Instagram 운영자 드림

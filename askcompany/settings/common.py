@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ADMINS = [
+    ('Chinseok Lee', 'me@askcompany.kr'),
+]
+
 
 # Application definition
 
@@ -138,3 +142,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INTERNAL_IPS = ['127.0.0.1']
+
+# Email with Send Grid
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+WELCOME_EMAIL_SENDER = "me@askcompany.kr"
