@@ -1,4 +1,5 @@
 {% extends "instagram/layout.html" %}
+{% load thumbnail %}
 
 {% block content %}
     <div class="container">
@@ -12,15 +13,15 @@
                     Edit Profile
                 </a>
                 <hr/>
-                0 posts, 0 followers, 0 following
+                {{ post_list_count }} posts, 0 followers, 0 following
                 <hr/>
                 {{ page_user.name }}
             </div>
         </div>
         <div class="row mt-3">
             {% for post in post_list %}
-                <div class="col-sm-4">
-                    <img src="{{ post.photo.url }}" alt="{{ post.caption }}" style="width: 100%;%" />
+                <div class="col-sm-4 mb-3">
+                    <img src="{% thumbnail post.photo 512x512 crop %}" alt="{{ post.caption }}" style="width: 100%;%" />
                 </div>
             {% endfor %}
         </div>
