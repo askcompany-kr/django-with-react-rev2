@@ -1,0 +1,11 @@
+{% extends "accounts/layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                {% include "_form.html" with submit_label="회원가입" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
