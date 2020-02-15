@@ -1,0 +1,11 @@
+{% extends "instagram/layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                {% include "_form.html" with form_title="새 포스팅 쓰기" submit_label="새 포스팅 쓰기" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
