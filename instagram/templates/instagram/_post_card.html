@@ -1,4 +1,4 @@
-{% load humanize instagram_tags %}
+{% load bootstrap4 humanize instagram_tags %}
 
 <div class="card">
     <div class="card-header">
@@ -49,6 +49,10 @@
         </div>
     </div>
     <div class="card-footer">
-        <a href="{% url "instagram:comment_new" post.pk %}">댓글 쓰기</a>
+        <form action="{% url "instagram:comment_new" post.pk %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form comment_form %}
+            <input type="submit" value="댓글 쓰기" class="btn btn-primary btn-block" />
+        </form>
     </div>
 </div>
