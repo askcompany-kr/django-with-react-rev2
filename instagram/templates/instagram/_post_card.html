@@ -22,13 +22,9 @@
             {% endif %}
         </div>
 
-        <div class="comment-list mt-3 mb-3">
+        <div id="post-{{ post.pk }}-comment-list" class="comment-list mt-3 mb-3">
             {% for comment in post.comment_set.all %}
-            <div class="comment">
-                <strong>{{ comment.author }}</strong>
-                {{ comment.message }}
-                <small class="text-muted">{{ comment.created_at|naturaltime }}</small>
-            </div>
+                {% include "instagram/_comment.html" %}
             {% endfor %}
         </div>
 
@@ -49,10 +45,34 @@
         </div>
     </div>
     <div class="card-footer">
-        <form action="{% url "instagram:comment_new" post.pk %}" method="POST">
+        <form id="post-{{ post.pk }}-comment-form" action="{% url "instagram:comment_new" post.pk %}" method="POST">
             {% csrf_token %}
             {% bootstrap_form comment_form %}
             <input type="submit" value="댓글 쓰기" class="btn btn-primary btn-block" />
         </form>
+
+        <script>
+        $(function() {
+            var form_id = "post-{{ post.pk }}-comment-form";
+            $("#" + form_id).submit(function(e) {
+                e.preventDefault();
+
+                var options = {
+                    success: function(responseText, statusText, xhr, $form) {
+                        console.group("ajaxSubmit response");
+                        console.log(responseText);
+                        console.log(statusText);
+                        console.log(xhr);
+                        console.log($form);
+                        console.groupEnd();
+
+                        $("#post-10-comment-list").prepend(responseText);
+                    }
+                };
+                $(this).ajaxSubmit(options);
+            });
+            console.log("document ready.");
+        });
+        </script>
     </div>
 </div>
