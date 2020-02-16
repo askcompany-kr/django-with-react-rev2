@@ -23,8 +23,10 @@
         Suggestions for you
     </div>
     <div class="card-body text-muted">
-        {% include "instagram/timeline_sidebar_user_follow.html" with friend_user=user %}
-        {% include "instagram/timeline_sidebar_user_follow.html" with friend_user=user %}
-        {% include "instagram/timeline_sidebar_user_follow.html" with friend_user=user %}
+        {% for suggested_user in suggested_user_list %}
+            {% include "instagram/timeline_sidebar_user_follow.html" %}
+        {% empty %}
+            추천 친구가 없습니다.
+        {% endfor %}
     </div>
 </div>
