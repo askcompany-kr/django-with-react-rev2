@@ -5,7 +5,9 @@
              class="rounded-circle" />
     </div>
     <div class="">
-        {{ suggested_user.username }}
+        <a href="{% url "instagram:user_page" suggested_user.username %}">
+            {{ suggested_user.username }}
+        </a>
     </div>
     <div class="ml-auto">
         <a href="{% url "user_follow" suggested_user.username %}">Follow</a>

@@ -1,7 +1,9 @@
 <div class="card">
     <div class="card-header">
         <img src="{{ post.author.avatar_url }}" style="width: 32px; height: 32px;" />
-        {{ post.author.name }}
+        <a href="{% url "instagram:user_page" post.author.username %}">
+            {{ post.author.name }}
+        </a>
     </div>
     <div class="card-body">
         <img src="{{ post.photo.url }}" style="width: 100%;" />
